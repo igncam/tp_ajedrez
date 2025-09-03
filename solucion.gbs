@@ -14,20 +14,7 @@
 
 // Biloteca utilizada https://github.com/igncam/blibloteca_gobstones
 
-// EJERCICIO 01
-procedure MoverPeonNegroUnaUbicacion() {
-    /*
-    PROPOSITO: Avanza el peón una posicion hacia adelante.
-    PRECONDICIONES: * No debe haber otra pieza delante del peón.
-      *El cabezal debe encontrarse sobre el peon en cuestion.
-    OBSERVACIONES: El cabezal queda situado sobre el peón.
-    */
-    borrarPiezaAqui()
-    Mover(Sur)
-    ColocarFicha_(1)
-    Poner(Negro)
-}
-
+// Procedures 
 procedure borrarPiezaAqui(){
     /*
     PROPOSITO: Saca la pieza de la celda actual.
@@ -37,7 +24,6 @@ procedure borrarPiezaAqui(){
     SacarTodasLasDeColor_(Negro)
     SacarTodasLasDeColor_(Verde)
 }
-
 
 procedure ColocarFicha_(cantidadDeBolitasAPoner) {
     /*
@@ -57,6 +43,37 @@ procedure ColocarFicha_(cantidadDeBolitasAPoner) {
     Poner_DeColor_(cantidadDeBolitasAPoner, Verde)
 }
 
+procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
+    
+    /*
+    PROPOSITO: Mueve el cabezal hacia la celda en diagonal hacia *primeraDireccion*
+    y *segundaDireccion*.
+    PRECONDICIONES: 
+         *Debe haber al menos una celda hacia *primeraDireccion*
+         *Debe haber al menos una celda hacia *segundaDireccion*
+         *primeraDireccion* y *segundaDireccion* no puede ser opuestas ni iguales.
+    */
+    
+    Mover(primeraDireccion)
+    Mover(segundaDireccion)
+}
+
+
+// EJERCICIO 01
+procedure MoverPeonNegroUnaUbicacion() {
+    /*
+    PROPOSITO: Avanza el peón una posicion hacia adelante.
+    PRECONDICIONES: * No debe haber otra pieza delante del peón.
+      *El cabezal debe encontrarse sobre el peon en cuestion.
+    OBSERVACIONES: El cabezal queda situado sobre el peón.
+    */
+    borrarPiezaAqui()
+    Mover(Sur)
+    ColocarFicha_(1)
+    Poner(Negro)
+}
+
+
 
 // EJERCICIO 02
 procedure ComerATorreBlancaAIzquierdaConPeon(){
@@ -74,7 +91,7 @@ procedure ComerATorreBlancaAIzquierdaConPeon(){
 }
 
 // EJERCICIO 03
-procedure LlevarTorreBlancaHastaAl(cantidadAMover,direccionAMover){
+procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
     /*
     PROPOSITO: Mueve la torre blanca *cantidadAMover* veces  en la direccion *direccionAMover*.
     PRECONDICIONES: *El cabezal debe estar sobre la torre blanca a mover.
@@ -88,7 +105,33 @@ procedure LlevarTorreBlancaHastaAl(cantidadAMover,direccionAMover){
     borrarPiezaAqui()
 
     Mover_VecesAl_(cantidadAMover,direccionAMover)
-    
+
     ColocarFicha_(5)
 }
 
+
+
+// EJERCICIO 05
+/*
+    Segun numeroAConvertir
+    **  8 cifras
+    **  De izquierda a derecha
+    **  los primeros 4 = AÑO
+    **  los siguientes 2 = MES
+    **  los 2 ultimos  = DIA
+
+    *Describe el año de nacimiento de una persona
+
+    (numeroAConvertir div 10000)
+
+    *Describe el mes de nacimiento de una persona
+
+    (numeroAConvertir div 100) mod 100
+
+    *Describe el dia de nacimiento de una persona
+
+    numeroAConvertir mod 100
+
+    * Nos indica si una persona es del milenio anterio
+    numeroAConvertir < 2000
+*/
