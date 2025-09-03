@@ -122,7 +122,7 @@ procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
 
     *Describe el año de nacimiento de una persona
 
-    (numeroAConvertir div 10000)
+    numeroAConvertir div 10000
 
     *Describe el mes de nacimiento de una persona
 
