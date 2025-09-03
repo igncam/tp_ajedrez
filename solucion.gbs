@@ -22,16 +22,16 @@ procedure MoverPeonNegroUnaUbicacion() {
       *El cabezal debe encontrarse sobre el peon en cuestion.
     OBSERVACIONES: El cabezal queda situado sobre el peón.
     */
-    borrarPiezaAqui ()
+    borrarPiezaAqui()
     Mover(Sur)
     ColocarFicha_(1)
     Poner(Negro)
 }
 
-procedure borrarPiezaAqui (){
+procedure borrarPiezaAqui(){
     /*
     PROPOSITO:  Saca la pieza de la celda actual.
-    PRECONDICIONES: el cabezal debe estar situdo donde encuentra la pieza a sacar.
+    PRECONDICIONES: l cabezal debe estar situdo donde encuentra la pieza a sacar.
     OBSERVACIONES: El cabezal queda situado sobre la celda que contenia la pieza.
     */
     SacarTodasLasDeColor_(Negro)
@@ -66,9 +66,9 @@ procedure ComerATorreBlancaAIzquierdaConPeon(){
         *El cabezal debe encontrarse sobre el peon en cuestion.
     OBSERVACIONES: El cabezal queda situado sobre el peón.
     */
-    borrarPiezaAqui ()
+    borrarPiezaAqui()
     MoverDiagonalAl_Y_(Sur,Oeste)
-    borrarPiezaAqui ()
+    borrarPiezaAqui()
     ColocarFicha_(1)
     Poner(Negro)
 }
@@ -85,7 +85,10 @@ procedure LlevarTorreBlancaHastaAl(cantidadAMover,direccionAMover){
     OBSERVACIONES:Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
     *En la ubicacion final de la torre no habra ninguna otra pieza.
     */
+    borrarPiezaAqui()
+
     repeat(cantidadAMover){
         Mover(direccionAMover)
     }
+    ColocarFicha_(5)
 }
