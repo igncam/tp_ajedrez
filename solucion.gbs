@@ -30,8 +30,8 @@ procedure MoverPeonNegroUnaUbicacion() {
 
 procedure borrarPiezaAqui(){
     /*
-    PROPOSITO:  Saca la pieza de la celda actual.
-    PRECONDICIONES: l cabezal debe estar situdo donde encuentra la pieza a sacar.
+    PROPOSITO: Saca la pieza de la celda actual.
+    PRECONDICIONES: El cabezal debe estar situdo donde encuentra la pieza a sacar.
     OBSERVACIONES: El cabezal queda situado sobre la celda que contenia la pieza.
     */
     SacarTodasLasDeColor_(Negro)
@@ -87,8 +87,8 @@ procedure LlevarTorreBlancaHastaAl(cantidadAMover,direccionAMover){
     */
     borrarPiezaAqui()
 
-    repeat(cantidadAMover){
-        Mover(direccionAMover)
-    }
+    Mover_VecesAl_(cantidadAMover,direccionAMover)
+    
     ColocarFicha_(5)
 }
+
