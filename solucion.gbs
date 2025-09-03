@@ -1,0 +1,91 @@
+/*
+-- Bolitas Verdes -- 
+1 = Peones
+2 = Caballos
+3 = Alfiles
+5 = Torres
+10 = Reina
+20 = Rey
+
+1 Bolita negra 
+1 azul = casillero balnco
+1 roja = casillero negro
+*/
+
+// Biloteca utilizada https://github.com/igncam/blibloteca_gobstones
+
+// EJERCICIO 01
+procedure MoverPeonNegroUnaUbicacion() {
+    /*
+    PROPOSITO: Avanza el peón una posicion hacia adelante.
+    PRECONDICIONES: * No debe haber otra pieza delante del peón.
+      *El cabezal debe encontrarse sobre el peon en cuestion.
+    OBSERVACIONES: El cabezal queda situado sobre el peón.
+    */
+    SacarPieza()
+    Mover(Sur)
+    ColocarFicha_(1)
+    Poner(Negro)
+}
+
+procedure SacarPieza(){
+    /*
+    PROPOSITO:  Saca la pieza de la celda actual.
+    PRECONDICIONES: el cabezal debe estar situdo donde encuentra la pieza a sacar.
+    OBSERVACIONES: El cabezal queda situado sobre la celda que contenia la pieza.
+    */
+    SacarTodasLasDeColor_(Negro)
+    SacarTodasLasDeColor_(Verde)
+}
+
+
+procedure ColocarFicha_(cantidadDeBolitasAPoner) {
+    /*
+        PROPÓSITO: Colocar una pieza segun la *cantidadDeBolitasAPoner* en la celda actual. 
+        PARÁMETROS:
+            * cantidadDeBolitasAPoner: Numero - Numero de bolitas a poner.
+        PRECONDICIONES:
+            * No debe haber ninguna pieza en la celda actual.
+        OBSERVACION: 
+            cantidadDeBolitasAPoner 1 Peon
+            cantidadDeBolitasAPoner 2 Caballos
+            cantidadDeBolitasAPoner 3 Alfiles
+            cantidadDeBolitasAPoner 5 Torres
+            cantidadDeBolitasAPoner 10 Reina
+            cantidadDeBolitasAPoner 20 Rey
+    */  
+    Poner_DeColor_(cantidadDeBolitasAPoner, Verde)
+}
+
+
+// EJERCICIO 02
+procedure ComerATorreBlancaAIzquierdaConPeon(){
+    /*
+    PROPOSITO: Comer la torre blanca que se encuentra en la diagonal izquierda del peón negro.
+    PRECONDICIONES: *La torre blanca debe encontrarse en la diagonal izquierda lindante al peon negro.
+        *El cabezal debe encontrarse sobre el peon en cuestion.
+    OBSERVACIONES: El cabezal queda situado sobre el peón.
+    */
+    SacarPieza()
+    MoverDiagonalAl_Y_(Sur,Oeste)
+    SacarPieza()
+    ColocarFicha_(1)
+    Poner(Negro)
+}
+
+// EJERCICIO 03
+procedure LlevarTorreBlancaHastaAl(cantidadAMover,direccionAMover){
+    /*
+    PROPOSITO: Mueve la torre blanca *cantidadAMover* veces  en la direccion *direccionAMover*.
+    PRECONDICIONES: *El cabezal debe estar sobre la torre blanca a mover.
+    El movimiento tiene que ser valido.
+    PARÁMETROS:
+        * cantidadAMover: Numero - Numero de movimientos a realizar.
+        * direccionAMover: Dirreccion - Punto cardinal que indica hacia dónde se moverá.
+    OBSERVACIONES:Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
+    *En la ubicacion final de la torre no habra ninguna otra pieza.
+    */
+    repeat(cantidadAMover){
+        Mover(direccionAMover)
+    }
+}
