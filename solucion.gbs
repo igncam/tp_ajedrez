@@ -59,6 +59,7 @@ procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
 }
 
 
+
 // EJERCICIO 01
 procedure MoverPeonNegroUnaUbicacion() {
     /*
@@ -74,12 +75,12 @@ procedure MoverPeonNegroUnaUbicacion() {
 }
 
 
-
 // EJERCICIO 02
 procedure ComerATorreBlancaAIzquierdaConPeon(){
     /*
     PROPOSITO: Comer la torre blanca que se encuentra en la diagonal izquierda del peón negro.
-    PRECONDICIONES: *La torre blanca debe encontrarse en la diagonal izquierda lindante al peon negro.
+    PRECONDICIONES: 
+        *La torre blanca debe encontrarse en la diagonal izquierda lindante al peon negro.
         *El cabezal debe encontrarse sobre el peon en cuestion.
     OBSERVACIONES: El cabezal queda situado sobre el peón.
     */
@@ -93,14 +94,16 @@ procedure ComerATorreBlancaAIzquierdaConPeon(){
 // EJERCICIO 03
 procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
     /*
-    PROPOSITO: Mueve la torre blanca *cantidadAMover* veces  en la direccion *direccionAMover*.
-    PRECONDICIONES: *El cabezal debe estar sobre la torre blanca a mover.
-    El movimiento tiene que ser valido.
+    PROPOSITO: Mueve la torre blanca *cantidadAMover* veces en la direccion *direccionAMover*.
+    PRECONDICIONES: 
+        *El cabezal debe estar sobre la torre blanca a mover.
+        *El movimiento tiene que ser valido.
     PARÁMETROS:
         * cantidadAMover: Numero - Numero de movimientos a realizar.
         * direccionAMover: Dirreccion - Punto cardinal que indica hacia dónde se moverá.
-    OBSERVACIONES:Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
-    *En la ubicacion final de la torre no habra ninguna otra pieza.
+    OBSERVACIONES:
+        *Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
+        *En la ubicacion final de la torre no habra ninguna otra pieza.
     */
     borrarPiezaAqui()
 
@@ -108,7 +111,22 @@ procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
 
     ColocarFicha_(5)
 }
+// EJERCICIO 04
+procedure EfectuarEnroqueCorto() {
+    /*
+        PROPÓSITO: El rey avanza dos casillas hacia la torre y la torre salta y queda justo al lado del rey, en la casilla opuesta.
+        PRECONDICIONES:
+            * El rey está en condiciones para efectuar el enroque
+        OBSERVACIONES: Este movimiento solo ocupa un turno.
+    */
 
+    borrarPiezaAqui()
+    Mover_VecesAl_(3,Este)
+    LlevarTorreBlancaHasta_Al_(2,Oeste)
+    Mover_VecesAl_(1,Este)
+    ColocarFicha_(20)
+
+}
 
 
 // EJERCICIO 05
