@@ -60,17 +60,21 @@ procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
 
 
 
+
 // EJERCICIO 01
 procedure MoverPeonNegroUnaUbicacion() {
     /*
     PROPOSITO: Avanza el peón una posicion hacia adelante.
-    PRECONDICIONES: * No debe haber otra pieza delante del peón.
-      *El cabezal debe encontrarse sobre el peon en cuestion.
+    PRECONDICIONES: 
+      * No debe haber otra pieza delante del peón.
+      * Debe haber al menos una celda hacia adelante.
+      * El cabezal debe encontrarse sobre el peon en cuestion.
     OBSERVACIONES: El cabezal queda situado sobre el peón.
     */
     borrarPiezaAqui()
     Mover_VecesAl_(1,Sur)
     ColocarFicha_(1)
+     // TODO: Preguntar si creamos procedure marcar pieza negra
     Poner(Negro)
 }
 
@@ -88,6 +92,7 @@ procedure ComerATorreBlancaAIzquierdaConPeon(){
     MoverDiagonalAl_Y_(Sur,Oeste)
     borrarPiezaAqui()
     ColocarFicha_(1)
+    // TODO: Preguntar si creamos procedure marcar pieza negra
     Poner(Negro)
 }
 
@@ -97,6 +102,7 @@ procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
     PROPOSITO: Mueve la torre blanca *cantidadAMover* veces en la direccion *direccionAMover*.
     PRECONDICIONES: 
         *El cabezal debe estar sobre la torre blanca a mover.
+          TODO: Preguntar
         *El movimiento tiene que ser valido.
     PARÁMETROS:
         * cantidadAMover: Numero - Numero de movimientos a realizar.
@@ -149,5 +155,5 @@ procedure EfectuarEnroqueCorto() {
     numeroAConvertir mod 100
 
     * Nos indica si una persona es del milenio anterio
-    numeroAConvertir < 2000
+    (numeroAConvertir div 10000) < 2000
 */
