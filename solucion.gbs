@@ -69,7 +69,7 @@ procedure MoverPeonNegroUnaUbicacion() {
     OBSERVACIONES: El cabezal queda situado sobre el peón.
     */
     borrarPiezaAqui()
-    Mover(Sur)
+    Mover_VecesAl_(1,Sur)
     ColocarFicha_(1)
     Poner(Negro)
 }
@@ -106,9 +106,7 @@ procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
         *En la ubicacion final de la torre no habra ninguna otra pieza.
     */
     borrarPiezaAqui()
-
     Mover_VecesAl_(cantidadAMover,direccionAMover)
-
     ColocarFicha_(5)
 }
 // EJERCICIO 04
