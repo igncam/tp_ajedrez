@@ -43,6 +43,7 @@ procedure ColocarFicha_(cantidadDeBolitasAPoner) {
     Poner_DeColor_(cantidadDeBolitasAPoner, Verde)
 }
 
+
 procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
     
     /*
@@ -157,3 +158,31 @@ procedure EfectuarEnroqueCorto() {
     * Nos indica si una persona es del milenio anterio
     (numeroAConvertir div 10000) < 2000
 */
+
+
+// EJERCICIO 06 
+
+procedure MoverCaballoHaciaEl_Y_SiEsPosible(primeraDireccion, segundaDireccion) {
+    /*
+        PROPÓSITO:  Mover el caballo 2 posiciones hacia *primeraDireccion* y 1 hacia *segundaDireccion*
+        PARÁMETROS:
+            * primeraDireccion: Dirreccion - Mueve 2 posiciones en esta direccion.
+            * segundaDireccion: Dirreccion - Mueve 1 posicion en esta direccion.
+        PRECONDICIONES: 
+            * *primeraDireccion* y *segundaDireccion* no pueden ser iguales.
+            * *primeraDireccion* y *segundaDireccion* no pueden ser opuestas.
+            * Debe haber 2 posiciones hacia *primeraDireccion* y 1 posicion en la *segundaDireccion*
+    */
+
+     borrarPiezaAqui()
+     Mover_VecesAl_(2,primeraDireccion)
+     Mover_VecesAl_(1,segundaDireccion)
+
+    if (nroBolitas(Verde) /= 0) {
+         Mover_VecesAl_(2,opuesto(primeraDireccion)) 
+         Mover_VecesAl_(1,opuesto(segundaDireccion))
+        
+    }
+     ColocarFicha_(2)
+}
+    
