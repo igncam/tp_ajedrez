@@ -258,6 +258,7 @@ procedure MoverCaballoHaciaEl_Y_SiEsPosible(primeraDireccion, segundaDireccion) 
         PRECONDICIONES: 
             * **primeraDireccion** y **segundaDireccion** no pueden ser iguales.
             * **primeraDireccion** y **segundaDireccion** no pueden ser opuestas.
+        OBSERVACIONES: hayDosCeldasHacia_ Y hayPiezaADosCedasAl_YUnaAl_ BIBLOTECA
     */
 
     if (hayDosCeldasHacia_(primeraDireccion) && puedeMover(segundaDireccion) && not hayPiezaADosCedasAl_YUnaAl_(primeraDireccion,segundaDireccion)) {
