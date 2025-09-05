@@ -203,6 +203,7 @@ procedure MoverCaballoDosHacia_YUnaAl_(primeraDireccion, segundaDireccion) {
         PRECONDICIONES: 
             * El cabezal debe encontrarse sobre el Caballo en cuestion.
             * **primeraDireccion** y **segundaDireccion** no pueden ser opuestas.
+            * El movimiento tiene que ser valido.
     */
         if(hayBolitas(Negro)){
             borrarPiezaAqui()
