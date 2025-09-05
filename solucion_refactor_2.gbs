@@ -1,0 +1,293 @@
+/*
+Grupo
+Nombres y Apellido de los integrantes
+- 
+-
+-
+-
+*/
+// Biloteca utilizada https://github.com/igncam/blibloteca_gobstones
+
+
+// Biloteca - INICIO
+procedure borrarPiezaAqui(){
+    /*
+        PROPOSITO: Saca la pieza de la celda actual sin importar el color.
+        PRECONDICIONES: El cabezal debe estar situdo donde encuentra la pieza a sacar.
+        OBSERVACIONES: sacarTodasLasDeColor proviene de la Biloteca.
+    */
+    if(hayBolitas(Negro)){
+        SacarTodasLasDeColor_(Negro)
+    }
+    SacarTodasLasDeColor_(Verde)
+}
+
+procedure ColocarFichaBlancaIdentificador_(identificadorDeFicha){
+    /*
+        PROPÓSITO: Colocar una pieza blanca segun la **identificadorDeFicha** en la celda actual. 
+        PARÁMETROS:
+            * identificadorDeFicha: Numero - Indicador que representa una ficha.
+        PRECONDICIONES:
+            * Ninguna
+    */ 
+    ColocarFichaIdentificador_(identificadorDeFicha)
+
+}
+
+procedure ColocarFichaNegraIdentificador_(identificadorDeFicha){
+    /*
+        PROPÓSITO: Colocar una pieza negra segun la **identificadorDeFicha** en la celda actual. 
+        PARÁMETROS:
+            * identificadorDeFicha: Numero - Indicador que representa una ficha.
+        PRECONDICIONES:
+            * Ninguna
+    */ 
+    ColocarFichaIdentificador_(identificadorDeFicha)
+    Poner(Negro)
+
+}
+
+procedure ColocarFichaIdentificador_(identificadorDeFicha) {
+    /*
+        PROPÓSITO: Colocar una pieza segun la **identificadorDeFicha** en la celda actual. 
+        PARÁMETROS:
+            * identificadorDeFicha: Numero - Indicador que representa una ficha.
+        PRECONDICIONES:
+            * No debe haber ninguna pieza en la celda actual.
+        OBSERVACION:
+        Poner_DeColor_ proviene de la Biloteca.
+        El **identificadorDeFicha** numérico coincide con la cantidad de bolitas verdes 
+            identificadorDeFicha 1 Peon
+            identificadorDeFicha 2 Caballos
+            identificadorDeFicha 3 Alfiles
+            identificadorDeFicha 5 Torres
+            identificadorDeFicha 10 Reina
+            identificadorDeFicha 20 Rey
+    */  
+
+    Poner_DeColor_(identificadorDeFicha, Verde)
+}
+
+procedure PonerPeonNegro() {
+    /*
+        PROPÓSITO: Coloca peon negro en la celda actual.
+        PRECONDICIONES:
+            * ninguna
+    */
+
+    ColocarFichaNegraIdentificador_(1)
+    
+}
+
+procedure PonerTorreBlanco() {
+    /*
+        PROPÓSITO: Coloca torre blanco en la celda actual.
+        PRECONDICIONES:
+            * ninguna
+    */
+
+    ColocarFichaBlancaIdentificador_(5)
+    
+}
+
+
+procedure PonerReyBlanco() {
+    /*
+        PROPÓSITO: Coloca rey blanco en la celda actual.
+        PRECONDICIONES:
+            * ninguna
+    */
+
+    ColocarFichaBlancaIdentificador_(20)
+    
+}
+
+procedure PonerCaballoBlanco() {
+    /*
+        PROPÓSITO: Coloca Caballo blanco en la celda actual.
+        PRECONDICIONES:
+            * ninguna
+    */
+
+    ColocarFichaBlancaIdentificador_(2)
+    
+}
+procedure PonerCaballoNegro() {
+    /*
+        PROPÓSITO: Coloca Caballo Negro en la celda actual.
+        PRECONDICIONES:
+            * ninguna
+    */
+
+    ColocarFichaNegraIdentificador_(2)
+    
+}
+
+procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
+    /*
+        PROPOSITO: Mueve el cabezal hacia la celda en diagonal hacia *primeraDireccion*
+        y **segundaDireccion**.
+        PRECONDICIONES: 
+            *Debe haber al menos una celda hacia *primeraDireccion*
+            *Debe haber al menos una celda hacia *segundaDireccion*
+            *primeraDireccion* y *segundaDireccion* no puede ser opuestas ni iguales.
+    */
+    
+    Mover(primeraDireccion)
+    Mover(segundaDireccion)
+}
+
+procedure LlevarReyBlancoHasta_Al_(cantidadAMover,direccionAMover){
+    /*
+        PROPOSITO: Mueve la rey blanco **cantidadAMover** veces en la direccion **direccionAMover**.
+        PRECONDICIONES: 
+            *El cabezal debe estar sobre la rey blanco a mover.
+    TODO: Preguntar
+            *El movimiento tiene que ser valido.
+        PARÁMETROS:
+            * cantidadAMover: Numero - Numero de movimientos a realizar.
+            * direccionAMover: Dirreccion - Punto cardinal que indica hacia dónde se moverá.
+        OBSERVACIONES:
+            * Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
+            * En la ubicacion final del rey no habra ninguna otra pieza.
+    */
+    borrarPiezaAqui()
+    Mover_VecesAl_(cantidadAMover,direccionAMover)
+    PonerReyBlanco()
+}
+
+// Biloteca - FIN 
+
+// EJERCICIO 01
+procedure MoverPeonNegroUnaUbicacion() {
+    /*
+        PROPOSITO: Avanza el peón negro una posicion hacia adelante.
+        PRECONDICIONES: 
+            * No debe haber otra pieza delante del peón.
+            * Debe haber al menos una celda hacia adelante.
+            * El cabezal debe encontrarse sobre el peon en cuestion.
+    */
+    borrarPiezaAqui()
+    Mover_VecesAl_(1,Sur)
+    PonerPeonNegro()
+}
+
+
+// EJERCICIO 02
+procedure ComerATorreBlancaAIzquierdaConPeon(){
+    /*
+    PROPOSITO: Comer la torre blanca que se encuentra en la diagonal izquierda del peón negro.
+    PRECONDICIONES: 
+        * La torre blanca debe encontrarse en la diagonal izquierda lindante al peon negro.
+        * El cabezal debe encontrarse sobre el peon en cuestion.
+    OBSERVACIONES: El cabezal queda situado sobre el peón.
+    */
+    borrarPiezaAqui()
+    MoverDiagonalAl_Y_(Sur,Oeste)
+    borrarPiezaAqui()
+    PonerPeonNegro()
+}
+
+// EJERCICIO 03
+procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
+    /*
+        PROPOSITO: Mueve la torre blanca **cantidadAMover** veces en la direccion **direccionAMover**.
+        PRECONDICIONES: 
+            *El cabezal debe estar sobre la torre blanca a mover.
+    TODO: Preguntar
+            *El movimiento tiene que ser valido.
+        PARÁMETROS:
+            * cantidadAMover: Numero - Numero de movimientos a realizar.
+            * direccionAMover: Dirreccion - Punto cardinal que indica hacia dónde se moverá.
+        OBSERVACIONES:
+            * Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
+            * En la ubicacion final de la torre no habra ninguna otra pieza.
+    */
+    borrarPiezaAqui()
+    Mover_VecesAl_(cantidadAMover,direccionAMover)
+    PonerTorreBlanco()
+}
+
+// EJERCICIO 04
+procedure EfectuarEnroqueCorto() {
+    /*
+        PROPÓSITO: El rey blanco avanza dos casillas hacia la torre blanca y la torre salta al rey y queda justo al lado del rey, en la casilla opuesta.
+                    El cabezal queda en el rey blanco
+        PRECONDICIONES:
+            * El rey está en condiciones para efectuar el enroque
+        OBSERVACIONES: Este movimiento solo ocupa un turno.
+    */
+
+    LlevarReyBlancoHasta_Al_(2,Este)
+    Mover_VecesAl_(1,Este)
+    LlevarTorreBlancaHasta_Al_(2,Oeste)
+    Mover_VecesAl_(1,Este)
+}
+
+
+// EJERCICIO 05
+/*
+    Segun numeroAConvertir
+    **  8 cifras
+    **  De izquierda a derecha
+    **  los primeros 4 = AÑO
+    **  los siguientes 2 = MES
+    **  los 2 ultimos  = DIA
+
+    *Describe el año de nacimiento de una persona
+        numeroAConvertir div 10000
+
+    *Describe el mes de nacimiento de una persona
+        (numeroAConvertir div 100) mod 100
+
+    *Describe el dia de nacimiento de una persona
+        numeroAConvertir mod 100
+
+    * Nos indica si una persona es del milenio anterio
+        (numeroAConvertir div 10000) < 2000
+*/
+
+
+// EJERCICIO 06 
+procedure MoverCaballoHaciaEl_Y_SiEsPosible(primeraDireccion, segundaDireccion) {
+    /*
+        PROPÓSITO:  De ser posible mover el caballo 2 posiciones hacia **primeraDireccion** y 1 hacia **segundaDireccion**
+        PARÁMETROS:
+            * primeraDireccion: Dirreccion - Mueve 2 posiciones en esta direccion .
+            * segundaDireccion: Dirreccion - Mueve 1 posicion en esta direccion.
+        PRECONDICIONES: 
+            * **primeraDireccion** y **segundaDireccion** no pueden ser iguales.
+            * **primeraDireccion** y **segundaDireccion** no pueden ser opuestas.
+    */
+
+    if (hayDosCeldasHacia_(primeraDireccion) && puedeMover(segundaDireccion) && not hayPiezaADosCedasAl_YUnaAl_(primeraDireccion,segundaDireccion)) {
+        MoverCaballoDosHacia_Y_UnaAl_(primeraDireccion, segundaDireccion) 
+    }
+
+}
+
+procedure MoverCaballoDosHacia_YUnaAl_(primeraDireccion, segundaDireccion) {
+    /*
+        PROPÓSITO: Verificar y si es posible mover el caballo 2 posiciones hacia **primeraDireccion** y 1 hacia **segundaDireccion**
+        PARÁMETROS:
+            * primeraDireccion: Dirreccion - Mueve 2 posiciones en esta direccion .
+            * segundaDireccion: Dirreccion - Mueve 1 posicion en esta direccion.
+        PRECONDICIONES: 
+            * El cabezal debe encontrarse sobre el Caballo en cuestion.
+            * **primeraDireccion** y **segundaDireccion** no pueden ser opuestas.
+            * El movimiento tiene que ser valido.
+    */
+        if(hayBolitas(Negro)){
+            borrarPiezaAqui()
+            Mover_VecesAl_(2,primeraDireccion)
+            Mover_VecesAl_(1,segundaDireccion)
+            PonerCaballoNegro()
+        }else{
+            borrarPiezaAqui()
+            Mover_VecesAl_(2,primeraDireccion)
+            Mover_VecesAl_(1,segundaDireccion)
+            PonerCaballoBlanco()
+        }
+        
+}
+
