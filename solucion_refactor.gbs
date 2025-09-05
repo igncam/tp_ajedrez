@@ -1,39 +1,64 @@
 /*
--- Bolitas Verdes -- 
-1 = Peones
-2 = Caballos
-3 = Alfiles
-5 = Torres
-10 = Reina
-20 = Rey
-
-1 Bolita negra 
-1 azul = casillero balnco
-1 roja = casillero negro
+Grupo
+Nombres y Apellido de los integrantes
+- 
+-
+-
+-
 */
-
 // Biloteca utilizada https://github.com/igncam/blibloteca_gobstones
 
-// Procedures 
+
+// Biloteca - Procedures 
 procedure borrarPiezaAqui(){
     /*
-    PROPOSITO: Saca la pieza de la celda actual.
-    PRECONDICIONES: El cabezal debe estar situdo donde encuentra la pieza a sacar.
-    OBSERVACIONES: El cabezal queda situado sobre la celda que contenia la pieza.
+        PROPOSITO: Saca la pieza de la celda actual sin importar el color.
+        PRECONDICIONES: El cabezal debe estar situdo donde encuentra la pieza a sacar.
+        OBSERVACIONES: El cabezal queda situado sobre la celda que contenia la pieza.
     */
-    SacarTodasLasDeColor_(Negro)
+    if(hayBolitas(Negro)){
+        SacarTodasLasDeColor_(Negro)
+    }
     SacarTodasLasDeColor_(Verde)
 }
 
-procedure ColocarFicha_(identificadorDeFicha) {
+procedure ColocarFichaBlancaIdentificador_(identificadorDeFicha){
     /*
-        PROPÓSITO: Colocar una pieza segun la *identificadorDeFicha* en la celda actual. 
+        PROPÓSITO: Colocar una pieza blanca segun la **identificadorDeFicha** en la celda actual. 
+        PARÁMETROS:
+            * identificadorDeFicha: Numero - Indicador que representa una ficha.
+        PRECONDICIONES:
+            * Ninguna
+    */ 
+    ColocarFichaIdentificador_(identificadorDeFicha)
+
+}
+
+procedure ColocarFichaNegraIdentificador_(identificadorDeFicha){
+    /*
+        PROPÓSITO: Colocar una pieza negra segun la **identificadorDeFicha** en la celda actual. 
+        PARÁMETROS:
+            * identificadorDeFicha: Numero - Indicador que representa una ficha.
+        PRECONDICIONES:
+            * Ninguna
+    */ 
+    ColocarFichaIdentificador_(identificadorDeFicha)
+    Poner(Negro)
+
+}
+
+
+
+
+procedure ColocarFichaIdentificador_(identificadorDeFicha) {
+    /*
+        PROPÓSITO: Colocar una pieza segun la **identificadorDeFicha** en la celda actual. 
         PARÁMETROS:
             * identificadorDeFicha: Numero - Indicador que representa una ficha.
         PRECONDICIONES:
             * No debe haber ninguna pieza en la celda actual.
         OBSERVACION:
-        El *identificadorDeFicha* numérico coincide con la cantidad de bolitas verdes 
+        El **identificadorDeFicha** numérico coincide con la cantidad de bolitas verdes 
             identificadorDeFicha 1 Peon
             identificadorDeFicha 2 Caballos
             identificadorDeFicha 3 Alfiles
@@ -41,18 +66,18 @@ procedure ColocarFicha_(identificadorDeFicha) {
             identificadorDeFicha 10 Reina
             identificadorDeFicha 20 Rey
     */  
+
     Poner_DeColor_(identificadorDeFicha, Verde)
 }
 
 procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
-    
     /*
-    PROPOSITO: Mueve el cabezal hacia la celda en diagonal hacia *primeraDireccion*
-    y *segundaDireccion*.
-    PRECONDICIONES: 
-         *Debe haber al menos una celda hacia *primeraDireccion*
-         *Debe haber al menos una celda hacia *segundaDireccion*
-         *primeraDireccion* y *segundaDireccion* no puede ser opuestas ni iguales.
+        PROPOSITO: Mueve el cabezal hacia la celda en diagonal hacia *primeraDireccion*
+        y **segundaDireccion**.
+        PRECONDICIONES: 
+            *Debe haber al menos una celda hacia *primeraDireccion*
+            *Debe haber al menos una celda hacia *segundaDireccion*
+            *primeraDireccion* y *segundaDireccion* no puede ser opuestas ni iguales.
     */
     
     Mover(primeraDireccion)
@@ -63,18 +88,15 @@ procedure MoverDiagonalAl_Y_(primeraDireccion, segundaDireccion){
 // EJERCICIO 01
 procedure MoverPeonNegroUnaUbicacion() {
     /*
-    PROPOSITO: Avanza el peón una posicion hacia adelante.
-    PRECONDICIONES: 
-      * No debe haber otra pieza delante del peón.
-      * Debe haber al menos una celda hacia adelante.
-      * El cabezal debe encontrarse sobre el peon en cuestion.
-    OBSERVACIONES: El cabezal queda situado sobre el peón.
+        PROPOSITO: Avanza el peón negro una posicion hacia adelante.
+        PRECONDICIONES: 
+            * No debe haber otra pieza delante del peón.
+            * Debe haber al menos una celda hacia adelante.
+            * El cabezal debe encontrarse sobre el peon en cuestion.
     */
     borrarPiezaAqui()
     Mover_VecesAl_(1,Sur)
-    ColocarFicha_(1)
-     // TODO: Preguntar si creamos procedure marcar pieza negra
-    Poner(Negro)
+    ColocarFichaNegraIdentificador_(1)
 }
 
 
@@ -83,37 +105,36 @@ procedure ComerATorreBlancaAIzquierdaConPeon(){
     /*
     PROPOSITO: Comer la torre blanca que se encuentra en la diagonal izquierda del peón negro.
     PRECONDICIONES: 
-        *La torre blanca debe encontrarse en la diagonal izquierda lindante al peon negro.
-        *El cabezal debe encontrarse sobre el peon en cuestion.
+        * La torre blanca debe encontrarse en la diagonal izquierda lindante al peon negro.
+        * El cabezal debe encontrarse sobre el peon en cuestion.
     OBSERVACIONES: El cabezal queda situado sobre el peón.
     */
     borrarPiezaAqui()
     MoverDiagonalAl_Y_(Sur,Oeste)
     borrarPiezaAqui()
-    ColocarFicha_(1)
-    // TODO: Preguntar si creamos procedure marcar pieza negra
-    Poner(Negro)
+    ColocarFichaNegraIdentificador_(1)
 }
 
 // EJERCICIO 03
 procedure LlevarTorreBlancaHasta_Al_(cantidadAMover,direccionAMover){
     /*
-    PROPOSITO: Mueve la torre blanca *cantidadAMover* veces en la direccion *direccionAMover*.
-    PRECONDICIONES: 
-        *El cabezal debe estar sobre la torre blanca a mover.
-         TODO: Preguntar
-        *El movimiento tiene que ser valido.
-    PARÁMETROS:
-        * cantidadAMover: Numero - Numero de movimientos a realizar.
-        * direccionAMover: Dirreccion - Punto cardinal que indica hacia dónde se moverá.
-    OBSERVACIONES:
-        *Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
-        *En la ubicacion final de la torre no habra ninguna otra pieza.
+        PROPOSITO: Mueve la torre blanca **cantidadAMover** veces en la direccion **direccionAMover**.
+        PRECONDICIONES: 
+            *El cabezal debe estar sobre la torre blanca a mover.
+    TODO: Preguntar
+            *El movimiento tiene que ser valido.
+        PARÁMETROS:
+            * cantidadAMover: Numero - Numero de movimientos a realizar.
+            * direccionAMover: Dirreccion - Punto cardinal que indica hacia dónde se moverá.
+        OBSERVACIONES:
+            * Al final del movimiento, el cabezal queda situada sobre la torre en cuestion.
+            * En la ubicacion final de la torre no habra ninguna otra pieza.
     */
     borrarPiezaAqui()
     Mover_VecesAl_(cantidadAMover,direccionAMover)
-    ColocarFicha_(5)
+    ColocarFichaBlancaIdentificador_(5)
 }
+
 // EJERCICIO 04
 procedure EfectuarEnroqueCorto() {
     /*
@@ -127,8 +148,7 @@ procedure EfectuarEnroqueCorto() {
     Mover_VecesAl_(3,Este)
     LlevarTorreBlancaHasta_Al_(2,Oeste)
     Mover_VecesAl_(1,Este)
-    ColocarFicha_(20)
-
+    ColocarFichaBlancaIdentificador_(20)
 }
 
 
@@ -142,87 +162,57 @@ procedure EfectuarEnroqueCorto() {
     **  los 2 ultimos  = DIA
 
     *Describe el año de nacimiento de una persona
-
-    numeroAConvertir div 10000
+        numeroAConvertir div 10000
 
     *Describe el mes de nacimiento de una persona
-
-    (numeroAConvertir div 100) mod 100
+        (numeroAConvertir div 100) mod 100
 
     *Describe el dia de nacimiento de una persona
-
-    numeroAConvertir mod 100
+        numeroAConvertir mod 100
 
     * Nos indica si una persona es del milenio anterio
-    (numeroAConvertir div 10000) < 2000
+        (numeroAConvertir div 10000) < 2000
 */
 
 
 // EJERCICIO 06 
 procedure MoverCaballoHaciaEl_Y_SiEsPosible(primeraDireccion, segundaDireccion) {
     /*
-        PROPÓSITO:  Mover el caballo 2 posiciones hacia *primeraDireccion* y 1 hacia *segundaDireccion*
-        PARÁMETROS:
-            * primeraDireccion: Dirreccion - Mueve 2 posiciones en esta direccion.
-            * segundaDireccion: Dirreccion - Mueve 1 posicion en esta direccion.
-        PRECONDICIONES: 
-            * *primeraDireccion* y *segundaDireccion* no pueden ser iguales.
-            * *primeraDireccion* y *segundaDireccion* no pueden ser opuestas.
-            * Debe haber 2 posiciones hacia *primeraDireccion* y 1 posicion en la *segundaDireccion*
-    */
-
-     borrarPiezaAqui()
-     Mover_VecesAl_(2,primeraDireccion)
-     Mover_VecesAl_(1,segundaDireccion)
-
-    if (nroBolitas(Verde) /= 0) {
-         Mover_VecesAl_(2,opuesto(primeraDireccion)) 
-         Mover_VecesAl_(1,opuesto(segundaDireccion))
-        
-    }
-     ColocarFicha_(2)
-}
-
-// EJERCICIO 06_v2
-procedure MoverCaballoHaciaEl_Y_SiEsPosible(primeraDireccion, segundaDireccion) {
-
-    /*
-        PROPÓSITO:  Mover el caballo 2 posiciones hacia *primeraDireccion* y 1 hacia *segundaDireccion*
+        PROPÓSITO:  De ser posible mover el caballo 2 posiciones hacia **primeraDireccion** y 1 hacia **segundaDireccion**
         PARÁMETROS:
             * primeraDireccion: Dirreccion - Mueve 2 posiciones en esta direccion .
             * segundaDireccion: Dirreccion - Mueve 1 posicion en esta direccion.
         PRECONDICIONES: 
-            * *primeraDireccion* y *segundaDireccion* no pueden ser iguales.
-            * *primeraDireccion* y *segundaDireccion* no pueden ser opuestas.
+            * **primeraDireccion** y **segundaDireccion** no pueden ser iguales.
+            * **primeraDireccion** y **segundaDireccion** no pueden ser opuestas.
     */
 
     if (hayDosCeldasHacia_(primeraDireccion) && not hayPiezaADosCedasAl_YUnaAl_(primeraDireccion,segundaDireccion)) {
-       MoverCaballoDosHacia_YUnaAl_(primeraDireccion, segundaDireccion) 
+        MoverCaballoDosHacia_Y_UnaAl_(primeraDireccion, segundaDireccion) 
     }
 
 }
 
 procedure MoverCaballoDosHacia_YUnaAl_(primeraDireccion, segundaDireccion) {
     /*
-        PROPÓSITO: Verificar y si es posible mover el caballo 2 posiciones hacia *primeraDireccion* y 1 hacia *segundaDireccion*
+        PROPÓSITO: Verificar y si es posible mover el caballo 2 posiciones hacia **primeraDireccion** y 1 hacia **segundaDireccion**
         PARÁMETROS:
             * primeraDireccion: Dirreccion - Mueve 2 posiciones en esta direccion .
             * segundaDireccion: Dirreccion - Mueve 1 posicion en esta direccion.
         PRECONDICIONES: 
             * El cabezal debe encontrarse sobre el Caballo en cuestion.
-            * *primeraDireccion* y *segundaDireccion* no pueden ser opuestas.
+            * **primeraDireccion** y **segundaDireccion** no pueden ser opuestas.
     */
         if(hayBolitas(Negro)){
             borrarPiezaAqui()
             Mover_VecesAl_(2,primeraDireccion)
             Mover_VecesAl_(1,segundaDireccion)
-            ColocarFicha_(2)
-            Poner(Negro)
+            ColocarFichaNegraIdentificador_(2)
         }else{
             borrarPiezaAqui()
             Mover_VecesAl_(2,primeraDireccion)
             Mover_VecesAl_(1,segundaDireccion)
-            ColocarFicha_(2)
+            ColocarFichaBlancaIdentificador_(2)
         }
         
 }
