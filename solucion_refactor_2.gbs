@@ -8,7 +8,6 @@ Nombres y Apellido de los integrantes
 */
 // Biloteca utilizada https://github.com/igncam/blibloteca_gobstones
 
-
 // Biloteca - INICIO
 procedure borrarPiezaAqui(){
     /*
