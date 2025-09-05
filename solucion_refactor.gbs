@@ -14,7 +14,7 @@ procedure borrarPiezaAqui(){
     /*
         PROPOSITO: Saca la pieza de la celda actual sin importar el color.
         PRECONDICIONES: El cabezal debe estar situdo donde encuentra la pieza a sacar.
-        OBSERVACIONES: El cabezal queda situado sobre la celda que contenia la pieza.
+        OBSERVACIONES: sacarTodasLasDeColor proviene de la Biloteca.
     */
     if(hayBolitas(Negro)){
         SacarTodasLasDeColor_(Negro)
@@ -58,6 +58,7 @@ procedure ColocarFichaIdentificador_(identificadorDeFicha) {
         PRECONDICIONES:
             * No debe haber ninguna pieza en la celda actual.
         OBSERVACION:
+        Poner_DeColor_ proviene de la Biloteca.
         El **identificadorDeFicha** numérico coincide con la cantidad de bolitas verdes 
             identificadorDeFicha 1 Peon
             identificadorDeFicha 2 Caballos
