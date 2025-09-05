@@ -14,7 +14,7 @@
 
 // Biloteca utilizada https://github.com/igncam/blibloteca_gobstones
 
-// Bibloteca Procedures 
+// Procedures 
 procedure borrarPiezaAqui(){
     /*
     PROPOSITO: Saca la pieza de la celda actual.
@@ -195,8 +195,6 @@ procedure MoverCaballoHaciaEl_Y_SiEsPosible(primeraDireccion, segundaDireccion) 
             * *primeraDireccion* y *segundaDireccion* no pueden ser iguales.
             * *primeraDireccion* y *segundaDireccion* no pueden ser opuestas.
     */
-
- 
 
     if (hayDosCeldasHacia_(primeraDireccion) && not hayPiezaADosCedasAl_YUnaAl_(primeraDireccion,segundaDireccion)) {
        MoverCaballoDosHacia_YUnaAl_(primeraDireccion, segundaDireccion) 
